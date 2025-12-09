@@ -1,0 +1,18 @@
+// 註冊指令集
+import "dotenv/config";
+import { commands } from "./commands.js";
+
+// const url = `https://discord.com/api/v10/applications/${process.env.APPLICATION_ID}/commands`;
+const url = `https://discord.com/api/v10/applications/${process.env.APPLICATION_ID}/guilds/${process.env.GUILD_ID}/commands`;
+
+const res = await fetch(url, {
+  method: "PUT",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": `Bot ${process.env.BOT_TOKEN}`
+  },
+//   body: JSON.stringify(commands)
+  body: JSON.stringify([])
+});
+
+console.log(await res.json());
